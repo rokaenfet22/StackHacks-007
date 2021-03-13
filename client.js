@@ -15,9 +15,7 @@ async function retrieveDetails () {
 }
 
 function filler (distance) {
-    modesOfTravel = ['car', 'train', 'plane', 'helicopter', 'submarine', 'carPlane', 'blimp', 'hotAirBalloon'];
-    for (const mode in modesOfTravel) {
-        document.getElementById(mode).innerHTML = carbonEmission(mode, distance);
-    }
+    
+    
 }
 
