@@ -103,7 +103,7 @@ function initMap() {
 async function retrieveDetails () {
   const distance = url.body['rows'][0][0]['value']/1000;
   const paras = { distance: distance };
-  const response = await fetch('http://127.0.0.1:8090/getDetails', {
+  const response = await fetch('http://127.0.0.1:8080/getDetails', {
       method: 'GET',
       headers: {'content-type':'application/json'},
       body: JSON.stringify(paras)
