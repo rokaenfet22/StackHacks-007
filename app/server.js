@@ -2,6 +2,7 @@
 const express = require("express")
 const body_parser = require("body-parser")
 const { JSDOM } = require( "jsdom" );
+const request = require("request");
 
 //Using Jsdom to create blank window to be able to use jquery in node
 const { window } = new JSDOM( "" );
@@ -40,7 +41,13 @@ app.post("/sendPlaceId", function (req, res){
         })
         .then((r) => {
             let destination_formatted_address = r.data.results[0].formatted_address
-            res.json([origin_formatted_address,destination_formatted_address])
+            //request(`https://maps.googleapis.com/maps/api/distancematrix/json?origins=${body[0]}&destinations=${body[1]}&units=metric&key=AIzaSyA7v1SCQ8iEDAj5gZzQvbGs_Yr8tPe2Wmc`, 
+            //(err, res, body) => {
+            //    console.log(`error: ${err}`);
+            //    console.log(`status code: ${res && res.statusCode}`)
+            //    console.log(`body: ${body}`)
+            //})
+            res.json({"origin":origin_formatted_address,"destination":destination_formatted_address})
         })
         .catch((e) => {
             console.log(e.response.data.error_message);
@@ -49,6 +56,24 @@ app.post("/sendPlaceId", function (req, res){
     .catch((e) => {
         console.log(e.response.data.error_message);
     });
+})
+
+app.post("/getCoordinates", (originalResponse, response) => {
+    console.log("SENDING REQUEST")
+    request(`https://maps.googleapis.com/maps/api/distancematrix/json?origins=${originalResponse.body.origin}&destinations=${originalResponse.body.destination}&units=metric&key=AIzaSyCXLSnpeBg1BtMCIFBgD35F8sPIINUqW68`, 
+    (err, res, body) => {
+        console.log(`error: ${err}`);
+        console.log(`status code: ${res && res.statusCode}`)
+        console.log("THIS IS THE BODY OF A WORKING REQUEST")
+        console.log(`body: ${body}`)
+        console.log("This is the data I need: ")
+        body = JSON.parse(body)
+        console.log(typeof body)
+        console.log(body.rows[0].elements[0])
+        console.log("This is the object I send: ")
+        console.log({"distance" : body.rows[0].elements[0].distance.value})
+        response.json({"distance" : body.rows[0].elements[0].distance.value})
+    }) 
 })
 
 app.get('/getDetails', function (req, resp) {
