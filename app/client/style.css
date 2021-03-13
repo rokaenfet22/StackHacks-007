@@ -52,3 +52,60 @@
         font-size: 13px;
         font-weight: 300;
       }
+
+body {
+  margin: 50px;
+  text-align: center;
+  background-color: rgb(20, 20, 20);
+  color: white;
+  font-family: 'Syne Mono', monospace;
+}
+
+div {
+  color: white;
+}
+
+.impact {
+  max-width: 800px;
+}
+
+.table {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.table td {
+  border-top: 0;
+}
+
+.bubble1 {
+  text-align:center;width:100px; height: 100px; border:2px solid gray; border-radius: 50%; display:inline-block;
+}
+
+.bubble2 {
+  text-align:center;width:100px; height: 100px; border:2px solid gray; border-radius: 50%; background-size: cover;display:inline-block;
+}
+
+.bubble3 {
+  text-align:center;width:225px; height: 225px; border:2px solid gray; border-radius: 50%; background-color: #db9200;display:inline-block;
+}
+
+.bubble4 {
+  text-align:center;width:175px; height: 175px; border:2px solid gray; border-radius: 50%; background-size: cover;display:inline-block;
+}
+
+.ptext1 {
+  vertical-align: middle;font-size:65px; text-align: center;
+}
+
+.ptext2 {
+  vertical-align: middle;font-size:65px; text-align: center; margin-top:10%;margin-bottom:0;
+}
+
+.ptext3 {
+  vertical-align: middle;font-size:40px; text-align: center; margin-top:10%;margin-bottom:0; color: ;
+}
+
+.ptext4 {
+  
+}
