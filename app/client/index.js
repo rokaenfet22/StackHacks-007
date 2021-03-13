@@ -118,6 +118,7 @@ async function retrieveDetails () {
   for (let mode = 0; mode < length(modesOfTravel); mode++) {
       document.getElementById(modesOfTravel[mode]).innerHTML = details[mode] + 'kg';
       document.getElementById('g' + mode).innerHTML = details[mode]/0.375 + 'm<sup>2</sup>';
+      document.getElementById('m' + mode).innerHTML = '£' + details[mode]/0.5;
   }
 };
 
