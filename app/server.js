@@ -4,7 +4,7 @@ const body_parser = require("body-parser")
 
 //Immediate use of modules
 const app = express()
-app.use(express.static("./client")) //serving static files from /client dir
+app.use(express.static("./app/client")) //serving static files from /client dir
 app.use(express.json()) //Parsing json-encoded bodies
 
 app.listen("8080")
