@@ -10,19 +10,23 @@
   </head>
   <body>
     <div style="display: none">
-      <input
-        id="origin-input"
-        class="controls"
-        type="text"
-        placeholder="Enter an origin location"
-      />
+      <form>
+        <input
+          id="origin-input"
+          class="controls"
+          type="text"
+          placeholder="Enter an origin location"
+        />
 
-      <input
-        id="destination-input"
-        class="controls"
-        type="text"
-        placeholder="Enter a destination location"
-      />
+        <input
+          id="destination-input"
+          class="controls"
+          type="text"
+          placeholder="Enter a destination location"
+        />
+
+        <button type="submit" onSubmit=retrieveDetails()>Submit</button>
+      </form>
 
       <div id="mode-selector" class="controls">
         <input

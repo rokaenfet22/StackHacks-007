@@ -1,3 +1,4 @@
+var url = '';
 
 function initMap() {
     const map = new google.maps.Map(document.getElementById("map"), {
@@ -99,31 +100,17 @@ function initMap() {
     }
 }
 
-
-
-
-
-/*cameron's client.js
 async function retrieveDetails () {
-    const start = 
-    const destination = 
-    const paras = { start: start, destination: destination };
-    const response = await fetch('http://127.0.0.1:8090/getDetails', {
-        method: 'GET',
-        headers: {'content-type':'application/json'},
-        body: JSON.stringify(paras)
-    });
-    const details = await response.json();
-    for (const emissions in details) {
-        
-    }
-    filler(distance);
-}
-
-function filler (distance) {
-    modesOfTravel = ['car', 'train', 'plane', 'helicopter', 'submarine', 'carPlane', 'blimp', 'hotAirBalloon'];
-    for (const mode in modesOfTravel) {
-        document.getElementById(mode).innerHTML = carbonEmission(mode, distance);
-    }
-}
-*/
+  const distance = url.body['rows'][0][0]['value']/1000;
+  const paras = { distance: distance };
+  const response = await fetch('http://127.0.0.1:8090/getDetails', {
+      method: 'GET',
+      headers: {'content-type':'application/json'},
+      body: JSON.stringify(paras)
+  });
+  const details = await response.json();
+  modesOfTravel = ['car', 'train', 'plane', 'helicopter', 'submarine', 'carPlane', 'blimp', 'hotAirBalloon'];
+  for (let mode = 0; mode < length(modesOfTravel); mode++) {
+      document.getElementById(modesOfTravel[mode]).innerHTML = details[mode];
+  }
+};
