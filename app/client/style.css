@@ -1,7 +1,9 @@
 /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
        #map {
-        height: 100%;
+        height: 80vh;
+        width:70%;
+        margin: 40px;
       }
       
       /* Optional: Makes the sample page fill the window. */
@@ -52,3 +54,68 @@
         font-size: 13px;
         font-weight: 300;
       }
+
+body {
+  margin: 50px;
+  text-align: center;
+  background-color: rgb(20, 20, 20);
+  color: white;
+  font-family: 'Syne Mono', monospace;
+}
+
+div {
+  color: white;
+}
+
+.impact {
+  max-width: 1000px;
+}
+
+.table {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.table td {
+  border-top: 0;
+  padding-bottom: 70px;
+}
+
+.bubble1 {
+  text-align:center;width:100px; height: 100px; border:2px solid gray; border-radius: 50%; display:inline-block;
+}
+
+.bubble2 {
+  text-align:center;width:120px; height: 120px; border:2px solid gray; border-radius: 50%; background-size: cover;display:inline-block;
+}
+
+.bubble3 {
+  text-align:center;width:225px; height: 225px; border:2px solid gray; border-radius: 50%; background-size: cover;background-color: #db9200;display:inline-block;background-image: linear-gradient(to bottom, rgba(17, 17, 17, 0.589), rgba(17, 17, 17, 0.589)),
+  url(https://cms.qz.com/wp-content/uploads/2018/10/power-plant-carbon-emissions.jpg?quality=75&strip=all&w=1600&h=900&crop=1);
+}
+
+.bubble4 {
+  text-align:center;width:175px; height: 175px; border:2px solid gray; border-radius: 50%; background-size: cover;display:inline-block;background-image: linear-gradient(to bottom, rgba(17, 17, 17, 0.589), rgba(17, 17, 17, 0.589)),
+  url(https://www.pennington.com/-/media/Images/Pennington2-NA/US/blog/seed/how-to-identify-your-grass/Kentucky_31.jpg?h=800&la=en&w=1000&hash=7AF84F56C78ACAD83BABBF310157577B92EFB857);
+}
+
+.bubble5 {
+  text-align:center;width:200px; height:200px; border:2px solid gray; border-radius: 50%; background-size: cover;display:inline-block;background-image: linear-gradient(to bottom, rgba(17, 17, 17, 0.589), rgba(17, 17, 17, 0.589)),
+  url(https://i2-prod.mirror.co.uk/incoming/article21063095.ece/ALTERNATES/s615/0_Pound-coins-and-bank-notes.jpg);
+}
+
+.ptext1 {
+  vertical-align: middle;font-size:65px; text-align: center;
+}
+
+.ptext2 {
+  vertical-align: middle;font-size:65px; text-align: center; margin-top:10%;margin-bottom:0;
+}
+
+.ptext3 {
+  vertical-align: middle;font-size:40px; text-align: center; margin-top:10%;margin-bottom:0; color: ;
+}
+
+.donate {
+  padding: 40px;
+}
