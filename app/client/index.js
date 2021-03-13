@@ -107,14 +107,15 @@ function initMap() {
 
 async function retrieveDetails (distance) {
   const paras = { distance: distance };
-  const response = await fetch('http://127.0.0.1:8080/getDetails', {
-      method: 'GET',
-      headers: {'content-type':'application/json'},
+  console.log(paras)
+  const response = await fetch('http://127.0.0.1:8090/getDetails', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
       body: JSON.stringify(paras)
   });
   const details = await response.json();
   modesOfTravel = ['car', 'train', 'plane', 'helicopter', 'submarine', 'carPlane', 'blimp', 'hotAirBalloon'];
-  for (let mode = 0; mode < length(modesOfTravel); mode++) {
+  for (let mode = 0; mode < modesOfTravel.length; mode++) {
       document.getElementById(modesOfTravel[mode]).innerHTML = details[mode] + 'kg';
       document.getElementById('g' + mode).innerHTML = details[mode]/0.375 + 'm<sup>2</sup>';
       document.getElementById('m' + mode).innerHTML = '£' + details[mode]/0.5;
@@ -137,5 +138,5 @@ async function sendId(originId,destinationId){
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify(names)
     })
-    retrieveDetails(response.body.distance);
+    console.log(response.body.distance);
 }

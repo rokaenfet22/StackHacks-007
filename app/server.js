@@ -76,7 +76,7 @@ app.post("/getCoordinates", (originalResponse, response) => {
     }) 
 })
 
-app.get('/getDetails', function (req, resp) {
+app.post('/getDetails', function (req, resp) {
     try {
         const distance = req.body.distance;
         const modesOfTravel = ['car', 'train', 'plane', 'helicopter', 'submarine', 'carPlane', 'blimp', 'hotAirBalloon'];
