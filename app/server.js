@@ -1,11 +1,55 @@
 //Extract Modules
 const express = require("express")
 const body_parser = require("body-parser")
+const { JSDOM } = require( "jsdom" );
+
+//Using Jsdom to create blank window to be able to use jquery in node
+const { window } = new JSDOM( "" );
+const $ = require( "jquery" )( window );
 
 //Immediate use of modules
 const app = express()
 app.use(express.static("./app/client")) //serving static files from /client dir
 app.use(express.json()) //Parsing json-encoded bodies
+
+//Initializing npm installed google apis
+const {Client} = require("@googlemaps/google-maps-services-js");
+const client = new Client({});
+
+//Returning English Formatted Address from Address ID's
+app.post("/sendPlaceId", function (req, res){
+    const originId = req.body.origin
+    const destinationId = req.body.destination
+    client
+    .geocode({
+        params: {
+        place_id: originId,
+        key: "AIzaSyA7v1SCQ8iEDAj5gZzQvbGs_Yr8tPe2Wmc" //API key for Geocode
+        },
+        timeout: 1000, // milliseconds
+    })
+    .then((r) => {
+        let origin_formatted_address = r.data.results[0].formatted_address
+        client
+        .geocode({
+            params: {
+            place_id: destinationId,
+            key: "AIzaSyA7v1SCQ8iEDAj5gZzQvbGs_Yr8tPe2Wmc" //API key for Geocode
+            },
+            timeout: 1000, // milliseconds
+        })
+        .then((r) => {
+            let destination_formatted_address = r.data.results[0].formatted_address
+            res.json([origin_formatted_address,destination_formatted_address])
+        })
+        .catch((e) => {
+            console.log(e.response.data.error_message);
+        });
+    })
+    .catch((e) => {
+        console.log(e.response.data.error_message);
+    });
+})
 
 app.get('/getDetails', function (req, resp) {
     try {

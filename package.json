@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/rokaenfet22/StackHacks-007#readme",
   "dependencies": {
+    "@googlemaps/google-maps-services-js": "^3.1.16",
     "body-parser": "^1.19.0",
     "express": "^4.17.1"
   },

@@ -12,8 +12,8 @@ function initMap() {
   class AutocompleteDirectionsHandler {
     constructor(map) {
       this.map = map;
-      this.originPlaceId = "ChIJFRrlxmGHfkgRy8-a4viXKO0"; //Default Durham Cathedral
-      this.destinationPlaceId = "ChIJ6W3FzTRydkgRZ0H2Q1VT548"; //Default Heathrow Airport
+      this.originPlaceId = "-a4viXKO0";
+      this.destinationPlaceId = "";
       this.travelMode = google.maps.TravelMode.WALKING;
       this.directionsService = new google.maps.DirectionsService();
       this.directionsRenderer = new google.maps.DirectionsRenderer();
@@ -78,10 +78,15 @@ function initMap() {
         this.route();
       });
     }
-    route() {
+    async route() {
       if (!this.originPlaceId || !this.destinationPlaceId) {
         return;
       }
+
+      let a = await sendId(this.originPlaceId,this.destinationPlaceId);
+      //a is in format of [origin_address,destination_address] where both addresses are a formatted string e.g. Newcastle, UK (i.e. what is chosen in the drop down)
+      console.log(a)
+
       const me = this;
       this.directionsService.route(
         {
@@ -104,7 +109,11 @@ async function retrieveDetails () {
   const distance = url.body['rows'][0][0]['value']/1000;
   const paras = { distance: distance };
   const response = await fetch('http://127.0.0.1:8080/getDetails', {
+<<<<<<< HEAD
+      method: 'POST',
+=======
       method: 'GET',
+>>>>>>> c55fbc9c938d6f59af1d7bfe785571c0cbebbe21
       headers: {'content-type':'application/json'},
       body: JSON.stringify(paras)
   });
@@ -115,3 +124,15 @@ async function retrieveDetails () {
       document.getElementById('g' + mode).innerHTML = details[mode]/0.375 + 'm<sup>2</sup>';
   }
 };
+
+//Sends ID of original and destination location when both are available, and gets response as their formatted address [origin,destination] respectively
+async function sendId(originId,destinationId){
+  const paras = {origin: originId, destination:destinationId};
+  const res = await fetch('/sendPlaceId', {
+      method: 'POST',
+      headers: {'content-type':'application/json'},
+      body: JSON.stringify(paras)
+  })
+    const body = await res.json()
+    return body
+}
