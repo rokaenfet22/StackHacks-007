@@ -109,11 +109,7 @@ async function retrieveDetails () {
   const distance = url.body['rows'][0][0]['value']/1000;
   const paras = { distance: distance };
   const response = await fetch('http://127.0.0.1:8080/getDetails', {
-<<<<<<< HEAD
-      method: 'POST',
-=======
       method: 'GET',
->>>>>>> c55fbc9c938d6f59af1d7bfe785571c0cbebbe21
       headers: {'content-type':'application/json'},
       body: JSON.stringify(paras)
   });
