@@ -58,7 +58,7 @@ app.post("/sendPlaceId", function (req, res){
     });
 })
 
-app.post("/getCoordinates", (originalResponse, response) => {
+app.post("/getDistance", (originalResponse, response) => {
     try{
     console.log("SENDING REQUEST")
     request(`https://maps.googleapis.com/maps/api/distancematrix/json?origins=${originalResponse.body.origin}&destinations=${originalResponse.body.destination}&units=metric&key=AIzaSyCXLSnpeBg1BtMCIFBgD35F8sPIINUqW68`, 
@@ -73,21 +73,21 @@ app.post("/getCoordinates", (originalResponse, response) => {
         console.log(body.rows[0].elements[0])
         console.log("This is the object I send: ")
         console.log({"distance" : body.rows[0].elements[0].distance.value})
-        response.json({"distance" : body.rows[0].elements[0].distance.value})
+        response.json({"distance":body.rows[0].elements[0].distance.value})
     }) } catch{
         response.sendStatus(500);
     }
 })
 
-app.post('/getDetails', function (req, resp) {
+app.post('/getEmissions', function (req, resp) {
     try {
         const distance = req.body.distance;
         const modesOfTravel = ['car', 'train', 'plane', 'helicopter', 'submarine', 'carPlane', 'blimp', 'hotAirBalloon'];
         var emissions = [];
-        for (const mode in modesOfTravel) {
-            emissions.push(mode + ':' + carbonEmission(mode, distance));
+        for (const mode of modesOfTravel) {
+            emissions.push(carbonEmission(mode, distance));
         }
-        resp.json(emissions);
+        resp.json({emissions});
     } catch {
         resp.sendStatus(400);
     }

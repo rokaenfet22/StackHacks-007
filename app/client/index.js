@@ -106,17 +106,19 @@ function initMap() {
 async function retrieveDetails (distance) {
   const paras = { distance: distance };
   console.log(paras)
-  const response = await fetch('http://127.0.0.1:8090/getDetails', {
+  const response = await fetch('http://127.0.0.1:8090/getEmissions', {
       method: 'POST',
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify(paras)
   });
   const details = await response.json();
+  console.log(details.emissions);
+  const emissions = details.emissions;
   modesOfTravel = ['car', 'train', 'plane', 'helicopter', 'submarine', 'carPlane', 'blimp', 'hotAirBalloon'];
   for (let mode = 0; mode < modesOfTravel.length; mode++) {
-      document.getElementById(modesOfTravel[mode]).innerHTML = details[mode] + 'kg';
-      document.getElementById('g' + mode).innerHTML = details[mode]/0.375 + 'm<sup>2</sup>';
-      document.getElementById('m' + mode).innerHTML = '£' + details[mode]/0.5;
+      document.getElementById(modesOfTravel[mode]).innerHTML = parseInt(emissions[mode]) + 'kg';
+      document.getElementById('g' + mode).innerHTML = parseInt(emissions[mode]/0.375) + 'm<sup>2</sup>';
+      document.getElementById('m' + mode).innerHTML = '£' + parseInt(emissions[mode]/0.5);
   }
 };
 
@@ -131,11 +133,13 @@ async function sendId(originId,destinationId){
     const names = await res.json()
     console.log(names)
 
-    const response = await fetch("/getCoordinates", {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(names)
-    })
-    console.log(response.body);
-    return response.body.distance;
+  const response = await fetch("/getDistance", {
+    method: "POST",
+    headers: {"content-type": "application/json"},
+    body: JSON.stringify(names)
+  })
+  const distance = await response.json();
+  console.log(distance);
+  retrieveDetails(distance["distance"])
+  return response.body["distance"];
 }
