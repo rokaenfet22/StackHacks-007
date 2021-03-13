@@ -59,6 +59,7 @@ app.post("/sendPlaceId", function (req, res){
 })
 
 app.post("/getCoordinates", (originalResponse, response) => {
+    try{
     console.log("SENDING REQUEST")
     request(`https://maps.googleapis.com/maps/api/distancematrix/json?origins=${originalResponse.body.origin}&destinations=${originalResponse.body.destination}&units=metric&key=AIzaSyCXLSnpeBg1BtMCIFBgD35F8sPIINUqW68`, 
     (err, res, body) => {
@@ -73,7 +74,9 @@ app.post("/getCoordinates", (originalResponse, response) => {
         console.log("This is the object I send: ")
         console.log({"distance" : body.rows[0].elements[0].distance.value})
         response.json({"distance" : body.rows[0].elements[0].distance.value})
-    }) 
+    }) } catch{
+        response.sendStatus(500);
+    }
 })
 
 app.post('/getDetails', function (req, resp) {
@@ -84,7 +87,7 @@ app.post('/getDetails', function (req, resp) {
         for (const mode in modesOfTravel) {
             emissions.push(mode + ':' + carbonEmission(mode, distance));
         }
-        resp.status(400).json(emissions);
+        resp.json(emissions);
     } catch {
         resp.sendStatus(400);
     }

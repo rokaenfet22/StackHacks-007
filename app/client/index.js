@@ -53,12 +53,10 @@ function initMap() {
     // Sets a listener on a radio button to change the filter type on Places
     // Autocomplete.
     setupClickListener(id, mode) {
-      const radioButton = document.getElementById(id);
-      radioButton.addEventListener("click", () => {
-        this.travelMode = mode;
+        this.travelMode = google.maps.TravelMode.DRIVING;
         this.route();
-      });
-    }
+      };
+    
     setupPlaceChangedListener(autocomplete, mode) {
       autocomplete.bindTo("bounds", this.map);
       autocomplete.addListener("place_changed", () => {
@@ -138,5 +136,6 @@ async function sendId(originId,destinationId){
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify(names)
     })
-    console.log(response.body.distance);
+    console.log(response.body);
+    return response.body.distance;
 }
