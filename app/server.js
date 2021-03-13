@@ -9,13 +9,13 @@ app.use(express.json()) //Parsing json-encoded bodies
 
 app.get('/getDetails', function (req, resp) {
     try {
-        const distance = parseInt(req.body[rows][elements][distance][value]);
+        const distance = req.body.distance;
         const modesOfTravel = ['car', 'train', 'plane', 'helicopter', 'submarine', 'carPlane', 'blimp', 'hotAirBalloon'];
         var emissions = [];
         for (const mode in modesOfTravel) {
-            emmissions.push(mode + ':' + carbonEmission(mode, distance));
+            emissions.push(mode + ':' + carbonEmission(mode, distance));
         }
-        resp.status(400).json(emmissions);
+        resp.status(400).json(emissions);
     } catch {
         resp.sendStatus(400);
     }
