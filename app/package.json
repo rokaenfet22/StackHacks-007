@@ -1,0 +1,28 @@
+{
+  "name": "stackhacks-007",
+  "version": "1.0.0",
+  "description": "production",
+  "main": "index.html",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rokaenfet22/StackHacks-007.git"
+  },
+  "author": "007",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rokaenfet22/StackHacks-007/issues"
+  },
+  "homepage": "https://github.com/rokaenfet22/StackHacks-007#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
