@@ -132,5 +132,4 @@ function carbonEmission (mode, distance) {
     return carbonEmission;
 }
 
-app.listen("8090")
-console.log("Server running at http://127.0.0.1:8090/")
+app.listen(process.env.PORT)
