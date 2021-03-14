@@ -17,6 +17,14 @@ app.use(express.json()) //Parsing json-encoded bodies
 const {Client} = require("@googlemaps/google-maps-services-js");
 const client = new Client({});
 
+app.get('/', function (req, resp) {
+    try {
+        resp.sendFile('./client/index.html', { root: __dirname });
+    } catch {
+        resp.sendStatus(400);
+    }
+});
+
 //Returning English Formatted Address from Address ID's
 app.post("/sendPlaceId", function (req, res){
     const originId = req.body.origin
