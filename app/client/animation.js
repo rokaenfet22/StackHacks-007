@@ -1,4 +1,4 @@
-let element_name_arr = ["1","2","3","4","5","6","7","8","9"] //List of ID's
+let element_name_arr = ["1","2","3","4","5","6","7","8","9","10"] //List of ID's
 let element_arr = []
 element_name_arr.forEach(function(item,index){
   element_arr.push(document.getElementById(item))
