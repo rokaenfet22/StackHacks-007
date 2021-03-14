@@ -132,5 +132,4 @@ function carbonEmission (mode, distance) {
     return carbonEmission;
 }
 
-app.listen("8090")
-//app.listen(process.env.PORT);
+app.listen(process.env.PORT);
