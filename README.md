@@ -10,3 +10,5 @@ run "npm start" in terminal
 On Heroku - https://doctor-no-carbon.herokuapp.com/
 
 #Note: If 2 geolocations cannot be connected by a driving route, the web app requires a restart as errors are handled by console output in the source code as for now.
+
+Devpost - https://devpost.com/software/dr-no-carbon
