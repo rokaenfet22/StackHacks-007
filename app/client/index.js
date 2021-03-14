@@ -106,7 +106,7 @@ function initMap() {
 async function retrieveDetails (distance) {
   const paras = { distance: distance };
   console.log(paras)
-  const response = await fetch('http://127.0.0.1:8090/getEmissions', {
+  const response = await fetch('/getEmissions', {
       method: 'POST',
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify(paras)
