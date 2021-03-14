@@ -132,4 +132,6 @@ function carbonEmission (mode, distance) {
     return carbonEmission;
 }
 
-app.listen(process.env.PORT)
+//app.listen(process.env.PORT) for hosting on heroku
+app.listen("8090")
+console.log("Server running at http://127.0.0.1:8090/")
