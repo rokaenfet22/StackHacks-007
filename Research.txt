@@ -1,2 +1,13 @@
 https://www.climatecare.org/calculator/ - 
-BBC - Train Carbon Emissions - 90g/km
+TRAIN - BBC - 0.041kg/km - https://www.bbc.co.uk/news/science-environment-49349566
+PLANE - BBC - 0.133kg/km - https://www.bbc.co.uk/news/science-environment-49349566
+CAR, CARPLANE, SUBMARINE, HELICOPTER - Calculated CO2 g/km from cars mpg - https://www.eta.co.uk/2010/02/22/calculating-a-cars-co2-emissions-from-its-mpg/
+CAR mpg - http://www.gbclassiccars.co.uk/aston_martin_db5.html
+SUBMARINE mpg - https://www.officialdata.org/cars/Lotus/Esprit%20V8
+HELICOPTER mpg - https://www.aneclecticmind.com/2008/05/20/helicopter-mileage/ 
+CARPLANE mpg - https://www.automobile-catalog.com/make/amc/matador_2gen/matador_2gen_sedan/1974.html
+BLIMP - “An airship produces 80 to 90 per cent fewer emissions" - https://isopolar.com/sustainable-transportation-airships-versus-jet-airplanes/
+HOTAIRBALLOON - To get average speed of balloon (12.8748km/h) https://www.wickersworld.co.uk/weather-restrictions-hot-air-ballooning/
+	      - To get emmissions for 1hr (120kg/h) https://www.baileyballoons.co.uk/environmental-policy/
+	      - Find kg/km (9.32kg/km)
+climatecare.org/calculator - Used a 100km

@@ -105,28 +105,28 @@ function carbonEmission (mode, distance) {
     distance = distance/1000;
     switch (mode) {
         case 'car':
-            var carbonFootprintPerUnit = 0.337; //Aston Martin DB5 kg/km carbon emissions
+            var carbonFootprintPerUnit = 0.45; //Aston Martin DB5 kg/km carbon emissions
             break;
         case 'train':
-            var carbonFootprintPerUnit = 0.0216; //Train (Spectre)
+            var carbonFootprintPerUnit = 0.041; //Train (Spectre)
             break;
         case 'plane':
-            var carbonFootprintPerUnit = 0.134; //Boeing 747-236B 'Skyfleet S570' (Casino Royale)
+            var carbonFootprintPerUnit = 0.133; //Boeing 747-236B 'Skyfleet S570' (Casino Royale)
             break;
         case 'helicopter':
-            var carbonFootprintPerUnit = 0.126; //Bell 206 JetRanger (The Spy Who Loved Me)
+            var carbonFootprintPerUnit = 0.627; //Bell 206 JetRanger (The Spy Who Loved Me)
             break;
         case 'submarine':
-            var carbonFootprintPerUnit = 0.316; //Lotus Esprint Wet Nellie Submarine-car (The Spy Who Loved Me)
+            var carbonFootprintPerUnit = 0.415; //Lotus Esprint Wet Nellie Submarine-car (The Spy Who Loved Me)
             break;
         case 'carPlane':
-            var carbonFootprintPerUnit = 0.389; //Carplane based on 1974 AMC Matador (The Man with the Golden Gun)
+            var carbonFootprintPerUnit = 0.463; //Carplane based on 1974 AMC Matador (The Man with the Golden Gun)
             break;
         case 'blimp':
             var carbonFootprintPerUnit = 0.027; //Zorin's Blimp (A View To A Kill)
             break;
         case 'hotAirBalloon':
-            var carbonFootprintPerUnit = 0.0948; //Hot Air Balloon (Octopussy)
+            var carbonFootprintPerUnit = 9.32; //Hot Air Balloon (Octopussy)
     }
     var carbonEmission = (distance*(carbonFootprintPerUnit)); // kg
     return carbonEmission;
