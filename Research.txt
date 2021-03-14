@@ -10,4 +10,3 @@ BLIMP - “An airship produces 80 to 90 per cent fewer emissions" - https://isop
 HOTAIRBALLOON - To get average speed of balloon (12.8748km/h) https://www.wickersworld.co.uk/weather-restrictions-hot-air-ballooning/
 	      - To get emmissions for 1hr (120kg/h) https://www.baileyballoons.co.uk/environmental-policy/
 	      - Find kg/km (9.32kg/km)
-climatecare.org/calculator - Used a 100km
