@@ -29,7 +29,8 @@ window.addEventListener("scroll",function(event){
             }
             item.classList.add(desired_fade)
             }else{
-            item.classList.remove(desired_fade)
+            item.classList.remove(left_fade)
+            item.classList.remove(right_fade)
             }
         })
 })
