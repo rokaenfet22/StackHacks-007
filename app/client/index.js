@@ -116,9 +116,10 @@ async function retrieveDetails (distance) {
   const emissions = details.emissions;
   modesOfTravel = ['car', 'train', 'plane', 'helicopter', 'submarine', 'carPlane', 'blimp', 'hotAirBalloon'];
   for (let mode = 0; mode < modesOfTravel.length; mode++) {
-      document.getElementById(modesOfTravel[mode]).innerHTML = parseInt(emissions[mode]) + 'kg';
-      document.getElementById('g' + mode).innerHTML = parseInt(emissions[mode]/0.375) + 'm<sup>2</sup>';
-      document.getElementById('m' + mode).innerHTML = '£' + parseInt(emissions[mode]/0.5);
+      let value = emissions[mode];
+      document.getElementById(modesOfTravel[mode]).innerHTML = Math.round(value) + 'kg';
+      document.getElementById('g' + mode).innerHTML = Math.round(value/0.9) + 'm<sup>2</sup>';
+      document.getElementById('m' + mode).innerHTML = '£' + Math.round(value*0.0077 * 100)/100;
   }
 };
 
