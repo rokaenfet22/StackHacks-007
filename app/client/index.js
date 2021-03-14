@@ -1,5 +1,3 @@
-var url = '';
-
 function initMap() {
     const map = new google.maps.Map(document.getElementById("map"), {
       mapTypeControl: false,
