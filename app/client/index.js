@@ -114,7 +114,7 @@ async function retrieveDetails (distance) {
   const emissions = details.emissions;
   modesOfTravel = ['car', 'train', 'plane', 'helicopter', 'submarine', 'carPlane', 'blimp', 'hotAirBalloon'];
   for (let mode = 0; mode < modesOfTravel.length; mode++) {
-      let value = emissions[mode];
+      let value = emissions[mode]*30;
       document.getElementById(modesOfTravel[mode]).innerHTML = Math.round(value) + 'kg';
       document.getElementById('g' + mode).innerHTML = Math.round(value/0.9) + 'm<sup>2</sup>';
       document.getElementById('m' + mode).innerHTML = '£' + Math.round(value*0.0077 * 100)/100;
