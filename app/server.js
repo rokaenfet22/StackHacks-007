@@ -19,7 +19,7 @@ const client = new Client({});
 
 app.get('/', function (req, resp) {
     try {
-        resp.sendFile('./client/index.html', { root: __dirname });
+        resp.sendFile('./client/index.html');
     } catch {
         resp.sendStatus(400);
     }
