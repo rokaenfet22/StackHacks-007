@@ -49,12 +49,6 @@ app.post("/sendPlaceId", function (req, res){
         })
         .then((r) => {
             let destination_formatted_address = r.data.results[0].formatted_address
-            //request(`https://maps.googleapis.com/maps/api/distancematrix/json?origins=${body[0]}&destinations=${body[1]}&units=metric&key=AIzaSyA7v1SCQ8iEDAj5gZzQvbGs_Yr8tPe2Wmc`, 
-            //(err, res, body) => {
-            //    console.log(`error: ${err}`);
-            //    console.log(`status code: ${res && res.statusCode}`)
-            //    console.log(`body: ${body}`)
-            //})
             res.json({"origin":origin_formatted_address,"destination":destination_formatted_address})
         })
         .catch((e) => {
@@ -68,19 +62,9 @@ app.post("/sendPlaceId", function (req, res){
 
 app.post("/getDistance", (originalResponse, response) => {
     try{
-    console.log("SENDING REQUEST")
     request(`https://maps.googleapis.com/maps/api/distancematrix/json?origins=${originalResponse.body.origin}&destinations=${originalResponse.body.destination}&units=metric&key=AIzaSyCXLSnpeBg1BtMCIFBgD35F8sPIINUqW68`, 
     (err, res, body) => {
-        console.log(`error: ${err}`);
-        console.log(`status code: ${res && res.statusCode}`)
-        console.log("THIS IS THE BODY OF A WORKING REQUEST")
-        console.log(`body: ${body}`)
-        console.log("This is the data I need: ")
         body = JSON.parse(body)
-        console.log(typeof body)
-        console.log(body.rows[0].elements[0])
-        console.log("This is the object I send: ")
-        console.log({"distance" : body.rows[0].elements[0].distance.value})
         response.json({"distance":body.rows[0].elements[0].distance.value})
     }) } catch{
         response.sendStatus(500);

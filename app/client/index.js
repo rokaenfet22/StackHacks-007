@@ -81,7 +81,6 @@ function initMap() {
 
       let a = await sendId(this.originPlaceId,this.destinationPlaceId);
       //a is in format of [origin_address,destination_address] where both addresses are a formatted string e.g. Newcastle, UK (i.e. what is chosen in the drop down)
-      console.log(a)
 
       const me = this;
       this.directionsService.route(
@@ -103,14 +102,12 @@ function initMap() {
 
 async function retrieveDetails (distance) {
   const paras = { distance: distance };
-  console.log(paras)
   const response = await fetch('/getEmissions', {
       method: 'POST',
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify(paras)
   });
   const details = await response.json();
-  console.log(details.emissions);
   const emissions = details.emissions;
   modesOfTravel = ['car', 'train', 'plane', 'helicopter', 'submarine', 'carPlane', 'blimp', 'hotAirBalloon'];
   for (let mode = 0; mode < modesOfTravel.length; mode++) {
@@ -130,7 +127,6 @@ async function sendId(originId,destinationId){
       body: JSON.stringify(paras)
   })
     const names = await res.json()
-    console.log(names)
 
   const response = await fetch("/getDistance", {
     method: "POST",
@@ -138,7 +134,6 @@ async function sendId(originId,destinationId){
     body: JSON.stringify(names)
   })
   const distance = await response.json();
-  console.log(distance);
   retrieveDetails(distance["distance"])
   return response.body["distance"];
 }
